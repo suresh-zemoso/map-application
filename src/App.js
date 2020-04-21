@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import NavBar from './component/NavBar';
+import NavBar from './component/navbar/NavBar';
 import history from './history/history';
 import {
   BrowserRouter

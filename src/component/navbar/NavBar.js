@@ -5,16 +5,16 @@ import {
     Route,
     NavLink
 } from "react-router-dom";
-import LoginPage from "./LoginPage";
-import PublicMapView from "./PublicMapView";
-import LoginMapView from "./LoginMapView";
-import LocationList from "./LocationList";
-import { ProtectedRoute } from "./ProtectedRoute";
+import LoginPage from "../login/LoginPage";
+import PublicMapView from "../public-map/PublicMapView";
+import LoginMapView from "../add-location/LoginMapView";
+import LocationList from "../location-list/LocationList";
+import { ProtectedRoute } from "../navbar/ProtectedRoute";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from "react-redux";
-import signout from "../utility/signout"
-import MarkLocation from "./MarkLocation";
+import signout from "../../utility/signout"
+import MarkLocation from "../location-view/MarkLocation";
 
 
 

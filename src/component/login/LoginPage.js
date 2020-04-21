@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LoginBlock from './LoginBlock';
-import signout from '../utility/signout';
+import signout from '../../utility/signout';
 
 
 const useStyles = makeStyles({

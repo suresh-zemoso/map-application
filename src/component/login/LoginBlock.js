@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
-import useInput from '../hooks/useInput';
+import useInput from '../../hooks/useInput';
 import { useDispatch } from "react-redux";
-import { login } from '../actions/actions';
+import { login } from '../../actions/actions';
 import { withRouter } from 'react-router';
-import { loginService } from '../services/loginService';
+import { loginService } from '../../services/loginService';
 import Alert from '@material-ui/lab/Alert';
 
 

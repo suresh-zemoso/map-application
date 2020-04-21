@@ -80,7 +80,7 @@ export default function LocationTable(props) {
                                 <TableCell scope="row">
                                     {location.id}
                                 </TableCell>
-                                <TableCell align="center">Longtitue ${location.lng} and Latitue ${location.lat}</TableCell>
+                                <TableCell align="center">Longtitue {location.lng} and Latitue {location.lat}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

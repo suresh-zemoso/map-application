@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseMapView from './BaseMapView';
+import BaseMapView from '../public-map/BaseMapView';
 import mapboxgl from 'mapbox-gl';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';

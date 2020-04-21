@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { saveAll } from '../actions/actions';
-import { locationService } from '../services/locationService';
+import { saveAll } from '../../actions/actions';
+import { locationService } from '../../services/locationService';
 import LocationTable from './LocationTable';
 
 

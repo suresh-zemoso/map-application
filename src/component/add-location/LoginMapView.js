@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BaseMapView from './BaseMapView';
+import BaseMapView from '../public-map/BaseMapView';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,7 +8,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useSelector } from "react-redux";
-import { locationService } from '../services/locationService';
+import { locationService } from '../../services/locationService';
 
 
 
