@@ -22,8 +22,9 @@ export function authentication(state = initialState, action) {
             return {
                 ...state,
                 isLogin: true,
+                error: false,
                 isFetching: false,
-                accessToken: action.token,
+                accessToken: action.payload,
             }
         case AUTH_ERROR:
             return {

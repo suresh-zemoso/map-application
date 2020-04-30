@@ -27,7 +27,7 @@ export function authRequest() {
 }
 
 export function authReceive(token) {
-    return { type: AUTH_RECEIVE, token }
+    return { type: AUTH_RECEIVE, payload: token }
 }
 
 export function authError() {

@@ -3,7 +3,7 @@ import { locationService } from '../services/locationService';
 
 
 export function saveAll(locations) {
-    return { type: SAVE_ALL, locations }
+    return { type: SAVE_ALL, payload: locations }
 }
 export function loadingLocations() {
     return { type: LOADING_LOCATIONS }

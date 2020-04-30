@@ -19,7 +19,7 @@ export function locationState(state = initialState, action) {
         case LOADING_LOCATIONS:
             return { ...state, loading: true }
         case SAVE_ALL:
-            return { ...state, locations: action.locations, loading: false }
+            return { ...state, locations: action.payload, loading: false }
         case FETCH_ERROR:
             return { ...state, fetchError: true, loading: false }
         case SAVE_FAILED:
