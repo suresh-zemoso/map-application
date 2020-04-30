@@ -92,46 +92,53 @@ const LoginMapView = (props) => {
         processQueue();
     };
 
-    function onHoverMapHandler(map) {
-        map.on('mousemove', (e) => {
-            setMapAttribute({
-                lng: e.lngLat.lng.toFixed(6),
-                lat: e.lngLat.lat.toFixed(6),
-                zoom: map.getZoom().toFixed(2)
-            });
+    function mousemoveListener(map, e) {
+        setMapAttribute({
+            lng: e.lngLat.lng.toFixed(6),
+            lat: e.lngLat.lat.toFixed(6),
+            zoom: map.getZoom().toFixed(2)
         });
     }
 
-    function onClickMapHandler(map) {
-        map.on('click', (e) => {
-            // create a HTML element for each feature
-            var el = document.createElement('div');
-            el.className = classes.marker;
-            console.debug("Lat lang value", e.lngLat.lat, e.lngLat.lng)
-            // make a marker for each feature and add to the map
-            const location = {
-                lng: e.lngLat.lng.toFixed(6),
-                lat: e.lngLat.lat.toFixed(6)
-            }
+    function onClickListener(map, e) {
+        // create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = classes.marker;
+        console.debug("Lat lang value", e.lngLat.lat, e.lngLat.lng)
+        // make a marker for each feature and add to the map
+        const location = {
+            lng: e.lngLat.lng.toFixed(6),
+            lat: e.lngLat.lat.toFixed(6)
+        }
 
-            dispatch(addLocation(location, accessToken))
-                .then(data => {
-                    openSnackbar(formatMessage(location.lat, location.lng));
-                    new mapboxgl.Marker(el)
-                        .setLngLat([e.lngLat.lng, e.lngLat.lat])
-                        .addTo(map);
-                },
-                    error => {
-                        openSnackbar("Error in adding location");
-                        console.log(error)
-                    })
-        });
+        dispatch(addLocation(location, accessToken))
+            .then(data => {
+                openSnackbar(formatMessage(location.lat, location.lng));
+                new mapboxgl.Marker(el)
+                    .setLngLat([e.lngLat.lng, e.lngLat.lat])
+                    .addTo(map);
+            },
+                error => {
+                    openSnackbar("Error in adding location");
+                    console.log(error)
+                })
     }
+
+    const handlers = [{
+        addEventListener: (map) => map.on('mousemove', (e) => mousemoveListener(map, e)),
+        removeEventListener: (map) => map.off('mousemove', (e) => mousemoveListener(map, e))
+    },
+    {
+        addEventListener: (map) => map.on('click', (e) => onClickListener(map, e)),
+        removeEventListener: (map) => map.off('click', (e) => onClickListener(map, e))
+    }
+    ]
+
 
     return (
         <>
             <BaseMapView
-                handlers={[onClickMapHandler, onHoverMapHandler]}
+                handlers={handlers}
                 mapAttribute={{
                     lng: mapAttribute.lng,
                     lat: mapAttribute.lat,

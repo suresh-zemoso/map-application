@@ -48,6 +48,7 @@ const BaseMapView = (props) => {
             variant: "contained"
         }
     }
+
     useEffect(() => {
         map.current = new mapboxgl.Map({
             container: "map",
@@ -74,8 +75,15 @@ const BaseMapView = (props) => {
             })
         );
         handlers && handlers.forEach(handler => {
-            handler(map.current);
+            handler.addEventListener(map.current);
         });
+
+        //remove all the listener when component unmount
+        return () => {
+            handlers && handlers.forEach(handler => {
+                handler.removeEventListener(map.current);
+            });
+        }
 
     }, []);
 
