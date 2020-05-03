@@ -53,14 +53,14 @@ const LoginBlock = (props) => {
 
     const dispatch = useDispatch();
     const authentication = useSelector(state => state.authentication)
+    console.warn('Auth', authentication);
     function submitForm() {
         const credentials = {
             username: username.value,
             password: password.value,
         }
-
         dispatch(login(credentials))
-            .then(() => { props.history.push("/locations/new") },
+            .then(() => { props.history.push("/locations") },
                 (error) => {
                     console.warn(error);
                 });
@@ -94,15 +94,15 @@ const LoginBlock = (props) => {
                     variant="contained"
                     color="primary"
                     type="submit"
-                    onClick={() => { submitForm() }}>
+                    onClick={submitForm}>
                     Sign In
                 </Button>
             </div>
-        </div>
+        </div >
     )
 }
 
 LoginBlock.propTypes = propTypes;
 LoginBlock.defaultProps = defaultProps;
 
-export default LoginBlock;
+export default withRouter(LoginBlock);
