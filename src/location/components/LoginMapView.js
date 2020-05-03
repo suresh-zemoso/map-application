@@ -136,7 +136,7 @@ const LoginMapView = (props) => {
 
 
     return (
-        <>
+        <div>
             <BaseMapView
                 handlers={handlers}
                 mapAttribute={{
@@ -163,7 +163,7 @@ const LoginMapView = (props) => {
                     {messageInfo ? messageInfo.message : undefined}
                 </Alert>
             </Snackbar>
-        </>
+        </div>
     )
 }
 

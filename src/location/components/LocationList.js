@@ -34,7 +34,7 @@ const LocationList = (props) => {
     }, []);
 
     return (
-        <>
+        <div>
             {loading ? <div>Fetching Locations</div> : (fetchError ?
                 <div>{errorMessage}</div> :
                 <LocationTable
@@ -42,7 +42,7 @@ const LocationList = (props) => {
                     setlocationList={setlocationList}
                 />)
             }
-        </>
+        </div>
     )
 }
 

@@ -32,7 +32,7 @@ describe('LoginBlock', () => {
 
     it('should call submitForm function clicking on login button', () => {
         let loginButton = wrapped.find('button');
-        loginButton.first().simulate('click');
+        loginButton.at(0).simulate('click');
         expect(mockDispatch).toHaveBeenCalled();
     });
 
