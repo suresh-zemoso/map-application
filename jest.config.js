@@ -25,16 +25,16 @@ module.exports = {
     clearMocks: true,
     resetMocks: false,
 
-    collectCoverage: true,
+    // collectCoverage: true,
     collectCoverageFrom: ['src/**/*.js'],
-    coverageDirectory: './build/cov',
-    coverageReporters: ['lcov'],
-    coverageThreshold: {
-        global: {
-            branches: 100,
-            functions: 100,
-            lines: 100,
-            statements: 100
-        }
-    }
+    // coverageDirectory: './build/cov',
+    // coverageReporters: ['lcov'],
+    // coverageThreshold: {
+    //     global: {
+    //         branches: 100,
+    //         functions: 100,
+    //         lines: 100,
+    //         statements: 100
+    //     }
+    // }
 };

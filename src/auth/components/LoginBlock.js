@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 import useInput from '../../auth/hooks/useInput';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../hooks/reduxHooks";
 import { login } from '../../auth/actions/loginAction';
 import { withRouter } from 'react-router';
 import Alert from '@material-ui/lab/Alert';
@@ -53,7 +53,7 @@ const LoginBlock = (props) => {
 
     const dispatch = useDispatch();
     const authentication = useSelector(state => state.authentication)
-    console.warn('Auth', authentication);
+
     function submitForm() {
         const credentials = {
             username: username.value,

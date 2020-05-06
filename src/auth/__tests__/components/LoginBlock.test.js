@@ -2,38 +2,41 @@ import React from 'react';
 import { mount } from 'enzyme';
 import LoginBlock from '../../components/LoginBlock';
 import { MemoryRouter } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import * as ReactReduxHooks from "../../hooks/reduxHooks"
 
-let wrapped = mount(<MemoryRouter><LoginBlock /></MemoryRouter>);
 
-const mockDispatch = jest.fn();
-
-jest.mock('react-redux', () => {
-    const auth = { authentication: { error: true, errorMessage: 'adfkadskfajskd ' } };
-    return {
-        useSelector: jest.fn().mockImplementation(cb => cb(auth)),
-        useDispatch: jest.fn().mockImplementation(() => mockDispatch),
-    };
-});
-
-describe('LoginBlock', () => {
-    const { error } = console;
+describe("Login Block", () => {
+    let wrapper;
+    let store;
 
     beforeEach(() => {
-        console.error = jest.fn();
-    });
+        /* mocking store */
+        store = configureStore([thunk])({
+            authentication: { error: true, errorMessage: 'adfkadskfajskd ' }
+        });
 
-    afterEach(() => {
-        console.error = error;
-    })
+        jest
+            .spyOn(ReactReduxHooks, "useSelector")
+            .mockImplementation(state => store.getState());
+        /* mocking useDispatch on our mock store  */
+        jest
+            .spyOn(ReactReduxHooks, "useDispatch")
+            .mockImplementation(() => store.dispatch);
+
+        /* shallow rendering */
+        wrapper = mount(<MemoryRouter><LoginBlock store={store} /></MemoryRouter>);
+    });
 
     it('should render the LoginBlock Component correctly', () => {
-        expect(wrapped).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
     });
 
-    it('should call submitForm function clicking on login button', () => {
-        let loginButton = wrapped.find('button');
+    it("Click on login button should call dispatch", () => {
+        let loginButton = wrapper.find(Button);
         loginButton.at(0).simulate('click');
-        expect(mockDispatch).toHaveBeenCalled();
+        expect(ReactReduxHooks.useDispatch.mock.calls.length).toEqual(1);
     });
-
-});      
+});
