@@ -6,6 +6,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import { addLocation } from '../../location/actions/locationAction';
 import mapboxgl from 'mapbox-gl';
+import LocationImage from '../../../static/images/mapbox-icon.svg'
 
 
 
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
         fontWeight: 'bold'
     },
     marker: {
-        background: `url(${require("./mapbox-icon.svg")})`,
+        background: `url(${LocationImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: '90% 90%',
         width: '2rem',
