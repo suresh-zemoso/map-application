@@ -9,11 +9,21 @@ import { emptyFunction } from '../../utils/constant';
 
 const useStyles = makeStyles({
     buttonDiv: {
-        display: "flex",
-        justifyContent: "flex-end"
+        flexGrow: 1,
+        display: 'flex',
+        justifyContent: 'flex-end'
     },
     button: {
-        margin: "5px"
+        margin: " 0 5px"
+    },
+    buttonText: {
+        fontSize: '.8rem'
+    },
+    mapHeader: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '1%',
     }
 });
 
@@ -42,7 +52,7 @@ const BaseMapView = (props) => {
 
     const buttonCommonProps = (classes) => {
         return {
-            className: classes.button,
+            classes: { root: classes.button, label: classes.buttonText },
             size: "small",
             color: "primary",
             variant: "contained"
@@ -78,6 +88,8 @@ const BaseMapView = (props) => {
             handler.addEventListener(map.current);
         });
 
+        // window.addEventListener('resize', map.current.resize());
+
         //remove all the listener when component unmount
         return () => {
             handlers && handlers.forEach(handler => {
@@ -92,25 +104,30 @@ const BaseMapView = (props) => {
     }, [mapType]);
 
     return (
-        <div style={{ height: "100%", padding: "2% 3% 1% 3%", boxSizing: "border-box" }} >
-            {props.children}
-            <div className={classes.buttonDiv}>
-                <Button
-                    {...buttonCommonProps(classes)}
-                    onClick={() => { setMapType("satellite-v9") }}>Satellite view</Button>
-                <Button
-                    {...buttonCommonProps(classes)}
-                    onClick={() => { setMapType("streets-v11") }}>Street view</Button>
-                {
-                    buttons && buttons.map((button, index) =>
-                        <Button
-                            key={index}
-                            {...buttonCommonProps(classes)}
-                            onClick={button.onClick}
-                        >{button.buttonText}</Button>
-                    )}
+        <div style={{
+            height: "100%", padding: "2% 3% 1% 3%", boxSizing: "border-box"
+            , display: "flex", flexDirection: "column"
+        }} >
+            <div className={classes.mapHeader}>
+                {props.children}
+                <div className={classes.buttonDiv}>
+                    <Button
+                        {...buttonCommonProps(classes)}
+                        onClick={() => { setMapType("satellite-v9") }}>Satellite view</Button>
+                    <Button
+                        {...buttonCommonProps(classes)}
+                        onClick={() => { setMapType("streets-v11") }}>Street view</Button>
+                    {
+                        buttons && buttons.map((button, index) =>
+                            <Button
+                                key={index}
+                                {...buttonCommonProps(classes)}
+                                onClick={button.onClick}
+                            >{button.buttonText}</Button>
+                        )}
+                </div>
             </div>
-            <div style={{ height: "93%" }} id="map" />
+            <div style={{ flexGrow: "1" }} id="map" />
         </div>
     )
 }

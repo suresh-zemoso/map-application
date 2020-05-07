@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
-import useInput from '../../auth/hooks/useInput';
-import { useDispatch, useSelector } from "../hooks/reduxHooks";
+import useInput from '../../hooks/useInput';
+import { useDispatch, useSelector } from "../../hooks/reduxHooks";
 import { login } from '../../auth/actions/loginAction';
 import { withRouter } from 'react-router';
 import Alert from '@material-ui/lab/Alert';
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     buttonRoot: {
         width: '100%',
         margin: '3%',
-        height: '56px'
+        height: '2.5rem'
     },
     inputField: {
         width: '100%',
@@ -60,7 +60,7 @@ const LoginBlock = (props) => {
             password: password.value,
         }
         dispatch(login(credentials))
-            .then(() => { props.history.push("/locations") },
+            .then(() => { props.history.push("/locations/new") },
                 (error) => {
                     console.warn(error);
                 });

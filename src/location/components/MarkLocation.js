@@ -3,7 +3,6 @@ import BaseMapView from '../../location/components/BaseMapView';
 import mapboxgl from 'mapbox-gl';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 
 
 

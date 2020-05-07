@@ -7,6 +7,64 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+div {
+      font-size: calc(0.75vh + 0.75vw)
+ }
+span {
+      font-size: calc(0.75vh + 0.75vw)
+}
+p {
+      font-size: calc(0.75vh + 0.75vw)
+ }
+html {
+      font-size: calc(0.75vh + 0.75vw);
+}
+.mapboxgl-ctrl-top-right {
+   margin: 1rem 1rem 0 0;
+}
+.mapboxgl-ctrl-geocoder--button {
+ position: initial !important;
+     }  
+.mapboxgl-ctrl-geocoder--input
+{
+
+  font-size: 1rem;
+  height: 2.1rem;
+  padding: .5rem 2rem;
+}
+.mapboxgl-ctrl-geocoder--icon-search
+{
+  height: 1.17rem;
+  width: 1.17rem;
+  position: initial;
+  margin-left: 1rem;
+}
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl
+{
+  margin: 0 0 1rem 0 !important;
+}
+.mapboxgl-ctrl-geocoder {
+  width: auto;
+  display: flex;
+  align-items: center;
+  min-width: 16vw;
+} 
+.mapboxgl-ctrl-geocoder--icon-close {
+  width: 1.17rem;
+  height: 1.17rem;
+  margin: 0;
+}
+.mapboxgl-ctrl-geocoder--pin-right {
+  margin-right: 1rem;
+}
+.mapboxgl-ctrl-geolocate {
+  height: 1.5rem !important;
+  width: 1.5rem !important;
+}
+.mapboxgl-ctrl-icon {
+  background-size: contain;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

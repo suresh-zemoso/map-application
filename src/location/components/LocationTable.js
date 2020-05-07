@@ -15,7 +15,9 @@ import { emptyFunction } from '../../utils/constant';
 const useStyles = makeStyles({
     tableRow: {
         textDecoration: 'none',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        height: '5vh',
+        minHeight: '0'
     },
     tableContainer: {
         maxHeight: '100vh'

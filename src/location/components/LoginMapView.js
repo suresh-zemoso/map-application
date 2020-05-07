@@ -13,7 +13,6 @@ import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
     sidebarStyle: {
-        position: 'absolute',
         backgroundColor: '#404040',
         color: '#ffffff',
         zIndex: '1!important',
@@ -23,9 +22,9 @@ const useStyles = makeStyles({
     marker: {
         background: `url(${require("./mapbox-icon.svg")})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '45px 45px',
-        width: '50px',
-        height: '50px',
+        backgroundSize: '90% 90%',
+        width: '2rem',
+        height: '2.5rem',
         borderRadius: '50%',
         cursor: 'pointer'
     },
@@ -136,7 +135,7 @@ const LoginMapView = (props) => {
 
 
     return (
-        <div>
+        <React.Fragment>
             <BaseMapView
                 handlers={handlers}
                 mapAttribute={{
@@ -157,13 +156,13 @@ const LoginMapView = (props) => {
                 onExited={handleExited}
                 classes={{ anchorOriginTopCenter: classes.snackbar }}
                 // message={messageInfo ? messageInfo.message : undefined}
-                // autoHideDuration={3000}
+                autoHideDuration={3000}
                 onClose={handleClose} >
                 <Alert severity={saveError ? "error" : "success"}>
                     {messageInfo ? messageInfo.message : undefined}
                 </Alert>
             </Snackbar>
-        </div>
+        </React.Fragment>
     )
 }
 
