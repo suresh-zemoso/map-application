@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LoginBlock from './LoginBlock';
 import signout from '../../utils/signout';
-import PropTypes from 'prop-types';
 
 
 

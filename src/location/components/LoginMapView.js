@@ -6,7 +6,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import { addLocation } from '../../location/actions/locationAction';
 import mapboxgl from 'mapbox-gl';
-import PropTypes from 'prop-types';
 
 
 
@@ -103,7 +102,7 @@ const LoginMapView = (props) => {
         // create a HTML element for each feature
         var el = document.createElement('div');
         el.className = classes.marker;
-        console.debug("Lat lang value", e.lngLat.lat, e.lngLat.lng)
+        // console.debug("Lat lang value", e.lngLat.lat, e.lngLat.lng)
         // make a marker for each feature and add to the map
         const location = {
             lng: e.lngLat.lng.toFixed(6),

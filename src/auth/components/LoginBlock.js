@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "../../hooks/reduxHooks";
 import { login } from '../../auth/actions/loginAction';
 import { withRouter } from 'react-router';
 import Alert from '@material-ui/lab/Alert';
-import PropTypes from 'prop-types';
 
 
 const useStyles = makeStyles({

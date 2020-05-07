@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "../../hooks/reduxHooks";
 import { fetchLocations } from '../../location/actions/locationAction';
 import LocationTable from './LocationTable';
-import PropTypes from 'prop-types';
 
 
 
