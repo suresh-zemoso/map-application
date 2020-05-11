@@ -1,9 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import BaseMapView from '../../components/BaseMapView';
-import { mapUtility } from '../../../utils/mapUtility';
+import PublicMapView from '../../components/PublicMapView';
 
-// jest.mock("mapbox-gl", () => require("mapbox-gl-js-mock"));
 jest.mock('mapbox-gl', () => {
     const mockMap = jest.fn(() => ({
         on: jest.fn(),
@@ -87,35 +85,18 @@ jest.mock('mapbox-gl', () => {
 });
 
 
-describe('BaseMapView', () => {
-
-    let useEffect;
+describe('PublicMapView', () => {
     let wrapper;
 
-    const mockUseEffect = () => {
-        useEffect.mockImplementationOnce(f => f());
-    };
-
     beforeEach(() => {
-        /* mocking useEffect */
-        useEffect = jest.spyOn(React, "useEffect");
-        mockUseEffect();
 
-        /* mocking map utility */
-        // jest.mock("../../../utils/mapUtility", () => ({ mapUtility: { getGeoCoder: () => { } } }));
-        jest.spyOn(mapUtility, "getGeoCoder").mockImplementation(() => { })
+
         /* shallow rendering */
-        wrapper = mount(<BaseMapView />);
+        wrapper = shallow(<PublicMapView />);
     });
 
-    const props = {
-        mapMode: "satellite-v9",
-        mapAttribute: { lng: 5, lat: 34, zoom: 2 },
-        handlers: [],
-        buttons: []
-    };
 
-    it('should render the BaseMapView Component correctly', () => {
+    it('should render the PublicMapView Component correctly', () => {
         expect(wrapper).toMatchSnapshot();
     });
 

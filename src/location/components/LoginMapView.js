@@ -6,7 +6,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import { addLocation } from '../../location/actions/locationAction';
 import mapboxgl from 'mapbox-gl';
-import LocationImage from '../../../static/images/mapbox-icon.svg'
+import LocationImage from '../../../static/images/mapbox-icon.png'
 
 
 

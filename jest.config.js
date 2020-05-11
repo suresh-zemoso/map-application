@@ -9,7 +9,10 @@ module.exports = {
         '<rootDir>/node_modules/',
         '<rootDir>/build/'
     ],
-
+    moduleNameMapper: {
+        '^config$': '<rootDir>/webpack.config.js',
+        "\\.(css|jpg|png|svg|gif)$": "<rootDir>/__tests__/__mocks__/emptyModule.js"
+    },
     testMatch: ['<rootDir>/src/**/*.test.js'],
     testPathIgnorePatterns: [
         '<rootDir>/node_modules/',

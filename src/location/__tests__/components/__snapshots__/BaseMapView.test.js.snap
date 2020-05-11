@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BaseMapView should render the BaseMapView Component correctly 1`] = `ShallowWrapper {}`;
+exports[`BaseMapView should render the BaseMapView Component correctly 1`] = `ReactWrapper {}`;

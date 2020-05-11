@@ -1,9 +1,12 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import BaseMapView from '../../components/BaseMapView';
-import { mapUtility } from '../../../utils/mapUtility';
+import MarkLocation from '../../components/MarkLocation';
+import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { mapUtility } from '../../../utils/mapUtility'
 
-// jest.mock("mapbox-gl", () => require("mapbox-gl-js-mock"));
 jest.mock('mapbox-gl', () => {
     const mockMap = jest.fn(() => ({
         on: jest.fn(),
@@ -87,9 +90,10 @@ jest.mock('mapbox-gl', () => {
 });
 
 
-describe('BaseMapView', () => {
+describe('MarkLocation', () => {
 
     let useEffect;
+    let store;
     let wrapper;
 
     const mockUseEffect = () => {
@@ -97,15 +101,24 @@ describe('BaseMapView', () => {
     };
 
     beforeEach(() => {
+
+        store = configureStore([thunk])({
+            locationState: { locations: [] }
+        });
+
         /* mocking useEffect */
         useEffect = jest.spyOn(React, "useEffect");
         mockUseEffect();
 
-        /* mocking map utility */
-        // jest.mock("../../../utils/mapUtility", () => ({ mapUtility: { getGeoCoder: () => { } } }));
+        jest.mock('react-router-dom', () => ({
+            useParams: () => ({
+                id: 1,
+            }),
+        }));
         jest.spyOn(mapUtility, "getGeoCoder").mockImplementation(() => { })
+
         /* shallow rendering */
-        wrapper = mount(<BaseMapView />);
+        wrapper = mount(<Provider store={store}><MemoryRouter><MarkLocation /></MemoryRouter></Provider>);
     });
 
     const props = {
@@ -115,7 +128,7 @@ describe('BaseMapView', () => {
         buttons: []
     };
 
-    it('should render the BaseMapView Component correctly', () => {
+    it('should render the MarkLocation Component correctly', () => {
         expect(wrapper).toMatchSnapshot();
     });
 

@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { emptyFunction } from '../../utils/constant';
+import { mapUtility } from '../../utils/mapUtility';
 
 
 
@@ -69,20 +69,12 @@ const BaseMapView = (props) => {
 
         //Search location using input
         map.current.addControl(
-            new window.MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
-            })
+            mapUtility.getGeoCoder(mapboxgl)
         );
 
         // Add geolocate control to the map.
         map.current.addControl(
-            new mapboxgl.GeolocateControl({
-                positionOptions: {
-                    enableHighAccuracy: true
-                },
-                trackUserLocation: true
-            })
+            mapUtility.getGeoLocateControl(mapboxgl)
         );
         handlers && handlers.forEach(handler => {
             handler.addEventListener(map.current);

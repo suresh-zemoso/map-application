@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as ReactReduxHooks from "../../hooks/reduxHooks"
+import * as ReactReduxHooks from "../../../hooks/reduxHooks";
 
 
 describe("Login Block", () => {
